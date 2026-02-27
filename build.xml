@@ -47,7 +47,7 @@
 			<mkdir dir="${output.dir.classes}/server" />
 	</target>
 
-    <target name="server" depends="init">
+    <target name="server" depends="init,common">
 	    <delete dir="${lib.dir}/server.jar"/>
 		<delete dir="${output.dir.classes}/server" >
                 <include name="**/*"/>
@@ -125,6 +125,7 @@
         <jar destfile="${lib.dir}/server.jar" 
 			basedir="${output.dir.classes}">
 			<include name="logback.xml" />
+			<include name="common/*.class" />
 			<include name="server/*.class" />
 		</jar>
     </target>
@@ -142,7 +143,7 @@
         RUN 
     =================================================================== -->
     <target name="run-server" depends="jar-server">
-		<java classname="server.EchoServer" fork="yes">
+		<java classname="server.ServerConsole" fork="yes">
 			<classpath>
 				<pathelement path="${classpath}"/>
 				<pathelement location="${lib.dir}/ocsf.jar"/>
@@ -151,6 +152,7 @@
 				<pathelement location="${lib.dir}/logback-core-1.2.3.jar"/>
 				<pathelement location="${lib.dir}/slf4j-api-1.7.9.jar"/>
 			</classpath>
+			<arg value="${arg}"/>
 		</java>
     </target>
 
