@@ -90,3 +90,6 @@ ant run-client
 ><bob>  -> ID
 ><123>  -> PW
 >```
+
+## SimpleChat Load Test
+> ![Image](https://github.com/NullBins/java-backend-simplechat/blob/master/contents/SimpleChat_Test.png)
